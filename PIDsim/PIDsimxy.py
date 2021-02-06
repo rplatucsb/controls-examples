@@ -8,8 +8,8 @@ TIMER = 0
 TIME_STEP = 0.05
 SETPOINT = (0,0)
 SIM_TIME = 500
-INITIAL_X = -50
-INITIAL_Y = -50
+INITIAL_X = 200
+INITIAL_Y = -150
 MASS = 1 #kg
 MAX_THRUST = 50 #Newtons
 F_y = 0 #y force
@@ -23,9 +23,9 @@ Y_i = 0 #initial y
 KU = 10
 TU = 123 
 # no overshoot
-KP = KU * .2
-KI = (.4 * KU)/TU
-KD = (.066 * KU)/TU
+KP = 30
+KI = 15
+KD = 30
 #KD = 0.00128 for higher setpoints
 antiWindup = True
 # KP = 0.6
@@ -60,6 +60,7 @@ class Simulation(object):
 		self.Ykde = np.array([])
 		self.Ykie = np.array([])
 		self.Ythrst = np.array([])
+
 	def cycle(self):
 		while(self.sim):
 			Ythrust = self.pid.computeY(self.Insight.get_y())
